@@ -1,0 +1,448 @@
+import java.util.*;
+
+
+//Cristian Montanez
+// Febuary 21 2021
+//Project 1 
+
+public class Project1 {
+
+	//access to faculty info class
+	private static facultyInfo f= new facultyInfo();
+	
+	//access to student 1 class 
+	private static Student1 s= new Student1();
+	
+	private static Student2 c= new Student2();
+	
+	public static void main(String[] args) {
+		
+		Scanner myScan= new Scanner (System.in);
+		
+		int choice=0 ;
+		
+		System.out.println("Welcome to my Personal Management Program");
+
+		
+		
+		while (choice != 7) 
+		{
+			menuStart();
+			
+			
+			choice= myScan.nextInt();
+			
+			optionMethod(choice);
+			
+		}
+		
+		
+		
+	}
+  
+	private static void menuStart() 
+	{
+		System.out.println("1.Enter the information of the faculty");
+		
+		System.out.println("2. Enter information of the two students");
+		
+		System.out.println("3.Print tuition invoice");
+		
+		System.out.println("4.Print faculty information");
+		
+		System.out.println("5.Enter the information of the staff member");
+		
+		System.out.println("6.Print the information of the staff member");
+		
+		System.out.println("7.Exit Program");
+
+		System.out.println("\nEnter your selection");
+	}
+	
+	private static void optionMethod (int x) 
+	{
+		switch ( x )
+		{
+		
+		case 1 :
+			infoInputter(); 
+			
+			break;
+			
+		case 2 :
+			student1Info();
+			student2Info();
+			
+			break;
+			
+		case 3 :
+			
+			Scanner myScan= new Scanner (System.in);
+			int chooser=0;
+			System.out.println("Which student? 1 " + s.studentName1+  " or 2  ? "+ c.studentName2 );
+			chooser = myScan.nextInt();
+			if (chooser ==1 ) {
+				student1Print(); 
+			}
+			else
+				student2Print();
+			
+			break;
+		
+		case 4 : 
+			facultyPrint();
+			break; 
+			
+		case 5 : 
+			break;
+			
+		case 6 : 
+			break; 
+			
+		case 7 : 
+			System.out.println("Goodbye!");
+			break;
+	       
+			default  : 
+				System.out.println("Invalid entry");
+		
+		}
+		
+	}
+
+	//getting faculty inf (4) 
+	private static void infoInputter() 
+	{
+		Scanner myScan= new Scanner(System.in);
+		
+		System.out.println("Enter faculty info: \n");
+		
+		System.out.println("\t Name of the faculty: ");
+		f.facultyName= (myScan.nextLine());
+		//System.out.println(f.facultyNameReturn());
+
+				
+		System.out.println("ID: ");
+		f.facultyId=(myScan.nextLine());
+		//System.out.println(f.facultyIdReturn());
+
+		System.out.println("Rank: ");
+		f.facultyRank= (myScan.nextLine());
+		//System.out.println(f.facultyRankReturn());
+
+		System.out.println("Deparment: ");
+		f.facultyDepartment(myScan.nextLine());
+		//System.out.println(f.facultyDepartmentReturn());
+		
+		System.out.println("Faculty successfully added!");
+		
+		
+		
+		
+	}
+	
+	//print faculty info (4) 
+	private static void facultyPrint() 
+	{
+		System.out.println(f.toString());
+		
+	}
+	//print student 1 info
+	private static void student1Print() 
+	{
+		System.out.println(s.toStringStudent1());
+	}
+		//print student 2 info
+	private static void student2Print() 
+	{
+		System.out.println(c.toStringStudent2());
+	}
+		
+	
+	
+		
+	
+	
+	//Getting student 1 info
+	private static void student1Info() 
+	{
+		Scanner myScan= new Scanner(System.in);
+		
+		System.out.println("Enter student 1 info: \n");
+		
+		System.out.println("Name of Student: ");
+		s.studentName1=(myScan.nextLine());
+		
+		System.out.println("ID: ");
+		s.studentId1=(myScan.nextLine());
+		
+		System.out.println("GPA: ");
+		s.studentGpa1=(myScan.nextDouble());
+		
+		System.out.println("Credit hours: ");
+		s.studentCredit1=(myScan.nextInt());
+		
+		
+		System.out.println("\n Thanks!\n");
+		
+	}
+	
+	private static void student2Info() 
+	{
+		Scanner myScan= new Scanner(System.in);
+		
+		System.out.println("Enter student 2 info: \n");
+		
+		System.out.println("Name of Student: ");
+		c.studentName2=(myScan.nextLine());
+		
+		System.out.println("ID: ");
+		c.studentId2=(myScan.nextLine());
+		
+		System.out.println("GPA: ");
+		c.studentGpa2=(myScan.nextDouble());
+		
+		System.out.println("Credit hours: ");
+		c.studentCredit2=(myScan.nextInt());
+		
+		
+		System.out.println("\n Thanks!");
+		
+	}
+	
+}
+
+class facultyInfo
+{
+	String facultyName;
+	
+	String facultyId;
+	
+	String facultyDepartment;
+	
+	String facultyRank;
+	
+	
+	public void facultyName(String x) 
+	{
+		facultyName= x ; 
+	
+	}
+	
+	public String facultyNameReturn () 
+	{
+		return facultyName;
+	}
+	
+	
+	public void facultyId(String y) 
+	{
+		facultyId= y ; 
+		
+	}
+	
+	public String facultyIdReturn() 
+	{
+		return facultyId; 
+	
+	}
+	
+	public void facultyDepartment(String z ) 
+	{
+		facultyDepartment= z;
+		
+	}
+	
+	public String facultyDepartmentReturn () 
+	{
+		return facultyDepartment;
+	}
+	
+	public void facultyRank (String c) 
+	{
+		facultyRank = c; 
+	}
+	
+	public String facultyRankReturn() 
+	{
+		return facultyRank; 
+	}
+
+	
+		//  (4) print faculty info method
+	
+	public String toString () 
+	{
+		return ("-------------------------------------------------------------------" + 
+	
+				"\n " + facultyNameReturn() + 
+				
+				"\t \t" + facultyIdReturn() + 
+				
+				"\n" +  facultyDepartmentReturn() + " Department, " +   facultyRankReturn () +
+				
+				
+				
+				"\n-----------------------------------------------------------------"
+				);
+	}
+	
+	
+}
+
+
+
+//student 1 class (option 2 ) 
+
+class Student1
+{
+	String studentName1;
+	
+	String studentId1;
+	
+	Double studentGpa1;
+	
+	int studentCredit1;
+	
+
+	public void studentName1(String x) 
+	{
+		studentName1= x ; 
+	
+	}
+	
+	public String studentNameReturn1 () 
+	{
+		return studentName1;
+	}
+	
+	
+	public void studentId1(String y) 
+	{
+		studentId1= y ; 
+		
+	}
+	
+	public String studentIdReturn1() 
+	{
+		return studentId1; 
+	
+	}
+	
+	public void studentGpa1(double z ) 
+	{
+		studentGpa1= z;
+		
+	}
+	
+	public double studentGpaReturn1 () 
+	{
+		return studentGpa1;
+	}
+	
+	public void studentCredit1(int c) 
+	{
+		studentCredit1 = c; 
+	}
+	
+	public int studentCreditReturn1() 
+	{
+		return studentCredit1; 
+	}
+
+	public String toStringStudent1 () 
+	{
+		return ("-------------------------------------------------------------------" + 
+	
+				"\n " + studentNameReturn1() + 
+				
+				"\t \t" + studentIdReturn1() + 
+				
+				"\n" + "Credit hours" +  studentCreditReturn1() +
+				
+				"\n Total Costs:" +  studentCreditTotal1			
+				"\n-----------------------------------------------------------------"
+				);
+	}
+}
+
+
+	//Student  2 class
+
+class Student2
+{
+	String studentName2;
+	
+	String studentId2;
+	
+	Double studentGpa2;
+	
+	int studentCredit2;
+	
+	
+	public void studentName2(String x) 
+	{
+		studentName2= x ; 
+	
+	}
+	
+	public String studentNameReturn2 () 
+	{
+		return studentName2;
+	}
+	
+	
+	public void studentId2(String y) 
+	{
+		studentId2= y ; 
+		
+	}
+	
+	public String studentIdReturn2() 
+	{
+		return studentId2; 
+	
+	}
+	
+	public void studentGpa2(double z ) 
+	{
+		studentGpa2= z;
+		
+	}
+	
+	public double studentGpaReturn2 () 
+	{
+		return studentGpa2;
+	}
+	
+	public void studentCredit2(int c) 
+	{
+		studentCredit2 = c; 
+	}
+	
+	public int studentCreditReturn2() 
+	{
+		return studentCredit2; 
+	}
+	
+	
+	public String toStringStudent2 () 
+	{
+		return ("-------------------------------------------------------------------" + 
+	
+				"\n " + studentNameReturn2() + 
+				
+				"\t \t" + studentIdReturn2() + 
+				
+				"\n" +  studentCreditReturn2() +
+				
+				"\n-----------------------------------------------------------------"
+				);
+	}
+}
+
+
+	
+
+ 
+
